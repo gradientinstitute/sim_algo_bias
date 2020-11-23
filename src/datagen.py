@@ -198,8 +198,6 @@ class Scenario(object):
         return X, y
 
 
-
-
 def make_scenarios():
     """An exact copy of the notebook for now."""
     scenarios = {}
@@ -219,36 +217,6 @@ def make_scenarios():
     scenario.decision_thresh = [0.5, 0.5]
     scenario.set_noise("all", 0.2)
     scenarios[scenario_id] = scenario
-
-    # # Different Base Rates
-    # scenario_id = 10
-    # scenario = Scenario(scenario_id, "Different base rates")
-    # scenario.set_switches(False, False, False)
-    # scenario.set_population_counts("train", 10000, 10000)
-    # scenario.set_population_counts("test", 100000, 100000)
-    # scenario.set_leave_parameters("all", 0.6, 0.6)    # Women are less good customers because of the extra leave
-    # scenario.set_salary_parameters("all", 0.2, -0.2)    # Women earn a lower *base* salary on average
-    # scenario.set_pinterest_parameters("all", 0.2, 0.8)
-    # scenario.set_dist_parameters("all", 0.6, 0.6, 0.3)
-    # scenario.set_label_bias("all", 0)
-    # scenario.set_threshold("all", -0.5)
-    # scenario.set_noise("all", 0.2)
-    # scenarios[scenario_id] = scenario
-
-    # # Different base rate with proxy feature
-    # scenario_id = 15
-    # scenario = Scenario(scenario_id, "Different base rates with biased proxy")
-    # scenario.set_switches(True, False, False)
-    # scenario.set_population_counts("train", 10000, 10000)
-    # scenario.set_population_counts("test", 10000, 10000)
-    # scenario.set_leave_parameters("all", 0.6, 0.6)    # Women are less good customers because of the extra leave
-    # scenario.set_salary_parameters("all", 0.2, -0.2)    # Women earn a lower *base* salary on average
-    # scenario.set_pinterest_parameters("all", 0.2, 0.8)
-    # scenario.set_dist_parameters("all", 0.6, 0.6, 0.3)
-    # scenario.set_label_bias("all", 0)
-    # scenario.set_threshold("all", -0.5)
-    # scenario.set_noise("all", 0.2)
-    # scenarios[scenario_id] = scenario
 
 
     # Different Base Rates - Indigenous
@@ -354,12 +322,11 @@ def make_scenarios():
     scenario.set_threshold("all", -0.7)
     scenario.set_noise("all", 0.2)
     scenario.ticks = ["Gen pop", "SE Asian"]  # for plots
-    # scenario.groups = ["non Chinese", "Chinese"]  # for stakeholders
     scenario.protected = "SE Asian"
     scenarios[scenario_id] = scenario
 
-    scenario_id = 35
     # Biased label in training data and deployment data
+    scenario_id = 35
     scenario = Scenario(scenario_id, "Biased Labels in both training and deployment")
     scenario.set_switches(False, True, False)
     scenario.set_population_counts("train", 10000, 10000)
@@ -372,7 +339,6 @@ def make_scenarios():
     scenario.set_threshold("all", -0.7)
     scenario.set_noise("all", 0.2)
     scenario.ticks = ["Gen pop", "SE Asian"]  # for plots
-    # scenario.groups = ["non Chinese", "Chinese"]  # for stakeholders
     scenario.protected = "SE Asian"
     scenarios[scenario_id] = scenario
 
@@ -390,7 +356,6 @@ def make_scenarios():
     scenario.set_threshold("all", -0.7)
     scenario.set_noise("all", 1.4)
     scenario.ticks = ["25 & Over", "Under 25"]  # for plots
-    # scenario.groups = ["---", "youths"]  # for stakeholders
     scenario.protected = "youths"
     scenarios[scenario_id] = scenario
 
@@ -409,7 +374,6 @@ def make_scenarios():
     scenario.set_noise("all", 1.4)
     scenario.ticks = ["25 & Over", "Under 25"]  # for plots
     scenario.protected = "youths"
-    # scenario.groups = ["---", "youths"]  # for stakeholders
     scenarios[scenario_id] = scenario
 
     # Inflexible model
@@ -427,11 +391,10 @@ def make_scenarios():
     scenario.set_noise("all", 0.2)
     scenario.ticks = ["25 & Over", "Under 25"]  # for plots
     scenario.protected = "youths"
-    # scenario.groups = ["---", "youths"]  # for stakeholders
     scenarios[scenario_id] = scenario
 
     scenario_id = 425
-    scenario = Scenario(scenario_id, "Inflexible - fixed")
+    scenario = Scenario(scenario_id, "Inflexible - Mitigation")
     scenario.set_switches(False, True, True)             # Covariate shift
     scenario.set_population_counts("train", 10000, 10000) # Disadvantaged community underrepresented in training data
     scenario.set_population_counts("test", 10000, 10000)
@@ -444,7 +407,6 @@ def make_scenarios():
     scenario.set_noise("all", 0.2)
     scenario.ticks = ["25 & Over", "Under 25"]  # for plots
     scenario.protected = "youths"
-    # scenario.groups = ["---", "youths"]  # for stakeholders
     scenarios[scenario_id] = scenario
 
     return scenarios
